@@ -37,8 +37,6 @@ dummydates.dat    %file containing the dates of massbal meas.  namedatesmassbal
 0    %number of individual grid points for which model result output.  outgridnumber
 %***====read if number > 0============================***
 %***Outputfilename ** row/x-coord ***column/y-coord *** glob and net data included from input data
-firstpointoutput.txt 1.0 1.0 0
-secondpointoutput.txt 2.0 2.0 1
 %******** 3.) METHODS ENERGY BALANCE COMPONENTS ********************************
 2    %1=surface maps 2=start with initial snow cover.  methodinisnow
 3    %1=constant for surface types, >2=alb generated.  methodsnowalbedo, 6=zongo

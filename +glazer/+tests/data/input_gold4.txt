@@ -34,7 +34,7 @@ dummydates.dat    %file containing the dates of massbal meas.  namedatesmassbal
 0   %gridoutput of melt cumulated=1 or mean=0.  cumulmeltyes
 1000    %if cumulated, output in cm=10 or m=1000.  cm_or_m
 0    %time series of spatial mean to output (yes=1 no=0).  do_out_area
-0    %number of individual grid points for which model result output.  outgridnumber
+2    %number of individual grid points for which model result output.  outgridnumber
 %***====read if number > 0============================***
 %***Outputfilename ** row/x-coord ***column/y-coord *** glob and net data included from input data
 firstpointoutput.txt 1.0 1.0 0
