@@ -257,8 +257,8 @@ function c = entryToMaps(s)
     fmt = c('coordinatesyes');
     stake_coords = [];
     for ii = 160:(160 + c('maxmeltstakes') - 1)
-      thisStake = [lineposOffset(ii,1), lineposOffset(ii,2)] ;
-      thisStake = arrayfun(@(y)coordFmt(fmt,y), thisStake);
+      thisStake = [coordFmt(fmt, lineposOffset(ii,1)), coordFmt(fmt,lineposOffset(ii,2))];
+      %thisStake = arrayfun(@(y)coordFmt(fmt,y), thisStake);%, 'UniformOutput', false);
       stake_coords = [stake_coords; thisStake ];
     end
     %stake_coords = (map(fmt, [lineposOffset(ii,0), lineposOffset(ii,1)] for ii = range(159, 159 + c('maxmeltstakes'))));
