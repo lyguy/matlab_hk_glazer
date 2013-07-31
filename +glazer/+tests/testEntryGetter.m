@@ -1,7 +1,7 @@
 function testEntryGetter()
 %Test the EntryGetter class
 
-datapath = glazer.tests.getDataPAth();
+datapath = glazer.tests.getDataPath();
 infile = [datapath 'EntryGetterTest.txt'];
 
 gold1 = 'one';
