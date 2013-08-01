@@ -1,7 +1,7 @@
 function testOutput4()
 
 datapath = glazer.tests.getDataPath();
-infile = [datapath 'input_gold4.txt'];
+infile = [datapath '/' 'input_gold4.txt'];
 
 pass = glazer.tests.outputEqual(infile);
 

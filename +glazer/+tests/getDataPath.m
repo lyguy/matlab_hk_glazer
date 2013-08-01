@@ -1,3 +1,4 @@
 function datapath = getDataPath()
-datapath = [mfilename('fullpath') '/../data/'];
+thisFileName = mfilename('fullpath');
+datapath = [fileparts(thisFileName) '/data'];
 end
