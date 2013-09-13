@@ -9,7 +9,7 @@ classdef EntryGetter
       
       l = strread(str, '%s', 'delimiter','\n');
       for ii = 1:length(l)
-        eg.lines{ii} = strread(l{ii}, '%s', 'delimiter', ' ');
+        eg.lines{ii} = strread(l{ii}, '%s');
       end
     end
     
