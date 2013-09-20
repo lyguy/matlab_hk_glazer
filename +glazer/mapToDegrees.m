@@ -2,10 +2,7 @@
 % This code is distributed under the MIT License
 % Author: Lyman Gillispie
 
-function ostr = mapsToDat(CC)
-    %Super ugly conversion method,
-    %Args: CC - a dictionary containing all of the appropriate elements
-    %Returns: os, a valid input.dat for the Hock melt model
+function ostr = mapToDegrees(CC)
 
     ostr = [];
 

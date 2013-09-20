@@ -1,4 +1,8 @@
-function c = entryToMaps(s)
+% Copyright 2013 Lyman Gillispie
+% This code is distributed under the MIT License
+% Author: Lyman Gillispie
+
+function c = degreeToMaps(s)
 
   eg = glazer.EntryGetter(s);
   
