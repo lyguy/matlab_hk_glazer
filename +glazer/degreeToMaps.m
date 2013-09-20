@@ -3,6 +3,23 @@
 % Author: Lyman Gillispie
 
 function c = degreeToMaps(s)
+% degreeToMaps
+% Load strings containing valid DEBaM/DETIM v1.x.x input.txt files
+% into MATLAB containers.Map dictionaries, which may be manipulated.
+%
+% Args: s - String contining a full "input.txt" config file
+% Returns: c - MATLAB containers.Map object, whose keys are the
+% names of parameters set in "input.txt" and whose values are the values
+% from said config file.
+%
+% e.g 
+% > s = fileread("input.txt");
+% > c = glazer.degreeToMaps(s);
+% > c('inpath') 
+%  
+%  ans = "/Users/luser/meltmodel/data/"
+%
+
 
   eg = glazer.EntryGetter(s);
   
@@ -67,6 +84,8 @@ function c = degreeToMaps(s)
   c('do_out_area') = toInt(eg.linePos(36, 1));
   c('outgridnumber') = toInt(eg.linePos(37, 1));
   
+  % Read in 'outgrids'. this fails it 'outgridnumber' and the acutal number
+  % of grids in the file mismatch
   outGridOffset = 39 + c('outgridnumber');
   if c('outgridnumber')
     outgrids = {};
@@ -82,6 +101,9 @@ function c = degreeToMaps(s)
     c('outgrids') = {};
   end
 
+  % based on 'outgridnumber' we need to take into consideration the number
+  % of outgrid positions in the file, and start looking for the rest
+  % of the options _after_ the outgrids are finished
   lineposOffset = @(line, pos)   eg.linePos(line + outGridOffset, pos); 
  
   c('methodinisnow') = toInt(lineposOffset(2, 1));
@@ -257,6 +279,8 @@ function c = degreeToMaps(s)
   c('debrisfactor') = toInt(lineposOffset(157, 1));
 
   c('coordinatesyes') = toInt(lineposOffset(159, 1));
+  
+  %Read in the stake coords
   if c('maxmeltstakes') > 0
     fmt = c('coordinatesyes');
     stake_coords = [];
@@ -274,12 +298,17 @@ end
 
 
 function i = toInt(s)
+% Convert strings to Integers not floats
   ss = str2num(s);
   i = int32(ss);
 end
 
 
 function e = coordFmt(fmt, str)
+% convert output-stake coordinates 
+% to corect type given 'coordinateyes'
+%
+% if coordinateyes == 1 or 2 -> double, otherwise to int
 if or(fmt == 1, fmt == 2)
   e = str2double(str);
 elseif fmt == 3

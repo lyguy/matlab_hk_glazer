@@ -3,6 +3,13 @@
 % Author: Lyman Gillispie
 
 function ostr = mapToDegrees(CC)
+% Convert containers.Map object to a valid "input.txt" file
+% for DEBaM/DETIM v1.x.x
+% The Map object must have a key for every parameter specified in
+% "input.txt".
+%
+%Args: CC - a dictionary containing all of the appropriate elements
+%Returns: ostr - string contianing  a valid input.txt for the Hock melt model
 
     ostr = [];
 
@@ -49,7 +56,7 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr '%***====read if number > 0============================***' char(10)];
     ostr = [ostr '%***Outputfilename ** row/x-coord ***column/y-coord *** glob and net data included from input data' char(10)];
 
-
+    % printing outgrids requires a little care
     outgridsLoc = '';
     outgrids = CC('outgrids');
 
@@ -255,6 +262,7 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr '%******* 18.) OUTPUT STAKES **************************************' char(10)];
     ostr = [ostr sprintf('%i    %%1=stake locations given in local coordinates (x,y), 2=as 1 but center, 3=row/col.  coordinatesyes\n', CC('coordinatesyes'))];
 
+    % print out stake coords, with the correct formatting
     stake_coordsLoc = '';
     stakes = CC('stake_coords');
     diam = size(stakes);
@@ -271,14 +279,18 @@ end
   
 
 function s = dropZeros(f)
+% Helper function to drop trailing zeros from decimal representations.
+% This is a little slow.
 str = sprintf('%0.15f', f);
 re =regexp(str, '^0+(?!\.)|(?<!\.)0+$', 'split');
 s = char(re(1));
-%s = regexprep(str, '\.?0*$', '');
 end
 
 
 function s = fmtStakes(fmt, num)
+% Format Output-Stake locations to match
+% correct format given by 'coordinatesyes'
+%
 if or(fmt == 1, fmt ==2)
   s = dropZeros(num);
 elseif fmt == 3
