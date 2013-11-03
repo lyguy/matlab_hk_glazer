@@ -54,7 +54,7 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr sprintf('%i    %%time series of spatial mean to output (yes=1 no=0).  do_out_area\n', CC('do_out_area'))];
     ostr = [ostr sprintf('%i    %%number of individual grid points for which model result output.  outgridnumber\n', CC('outgridnumber'))];
     ostr = [ostr '%***====read if number > 0============================***' char(10)];
-    ostr = [ostr '%***Outputfilename ** row/x-coord ***column/y-coord *** glob and net data included from input data' char(10)];
+    ostr = [ostr '%***Outputfilename ** row/x-coord **colu/y-coord ** glob and net data included from input data' char(10)];
 
     % printing outgrids requires a little care
     outgridsLoc = '';
@@ -204,29 +204,17 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr sprintf('%i    %%storage constant k for firn.  firnkons\n', CC('firnkons'))];
     ostr = [ostr sprintf('%i    %%storage constant k for snow.  snowkons\n', CC('snowkons'))];
     ostr = [ostr sprintf('%i    %%storage constant k for ice.  icekons\n', CC('icekons'))];
-    ostr = [ostr sprintf('%i    %%storage constant k for rock(outside glacier non-snowcovered.  icekons\n', CC('rockkons'))];
+    ostr = [ostr sprintf('%i    %%storage constant k for rock(outside glacier non-snowcovered.  rockkons\n', CC('rockkons'))];
 
-    ostr = [ostr '%************* 13.) DISCHARGE STARTING VALUES**********************' char(10)];
+    ostr = [ostr '%************* 14.) DISCHARGE STARTING VALUES**********************' char(10)];
     ostr = [ostr sprintf('%s    %%start value for firn discharge (previous time step).  qfirnstart\n', dropZeros(CC('qfirnstart')))];
     ostr = [ostr sprintf('%s    %%start value for snow discharge (m3/s).  qsnowstart\n', dropZeros(CC('qsnowstart')))];
     ostr = [ostr sprintf('%s    %%start value for ice discharge.  qicestart\n', dropZeros(CC('qicestart')))];
     ostr = [ostr sprintf('%s    %%start value for rock discharge (outside glacier non-snowcovered).  qicestart\n', dropZeros(CC('qrockstart')))];
     ostr = [ostr sprintf('%s    %%groundwater discharge[m3].  qground\n', dropZeros(CC('qground')))];
     ostr = [ostr sprintf('%s    %%difference between start of calculation and start r2.  jdstartr2diff\n', dropZeros(CC('jdstartr2diff')))];
-
-    ostr = [ostr '%%%%%%%%%%%% 15.) OPTIMIZATION %%%%%%%%%%%%%%%%%%%%%' char(10)];
-    ostr = [ostr sprintf('%i    %%optimization run for k-values = 1; simulation=0.  disyesopt\n', CC('disyesopt'))];
-    ostr = [ostr sprintf('%s    %%1. parameter to optimize.  optkA\n', CC('optkA'))];
-    ostr = [ostr sprintf('%s    %%startvalue of 1. parameter to optimize.  startopt1\n', dropZeros(CC('startopt1')))];
-    ostr = [ostr sprintf('%s    %%step length.  stepopt1\n', dropZeros(CC('stepopt1')))];
-    ostr = [ostr sprintf('%i    %%number of steps no.1  anzahlopt1\n', CC('anzahlopt1'))];
-    ostr = [ostr sprintf('%s    %%2. parameter to optimize.  optkB\n', CC('optkB'))];
-    ostr = [ostr sprintf('%s    %%startvalue of 2. parameter.  startopt2\n', dropZeros(CC('startopt2')))];
-    ostr = [ostr sprintf('%s    %%steplength no.2 of optimal r2.  stepopt2\n', dropZeros(CC('stepopt2')))];
-    ostr = [ostr sprintf('%i    %%number of steps no.2.  anzahlopt2\n', CC('anzahlopt2'))];
-    ostr = [ostr sprintf('%s    %%name of r2-outputfile.  namematrix\n', CC('namematrix'))];
     
-    ostr = [ostr '%============ 16.) SNOW MODEL by C. Tijm-Reijmer 2/2005 ========================' char(10)];
+    ostr = [ostr '%============ 15.) SNOW MODEL by C. Tijm-Reijmer 2/2005 ========================' char(10)];
     ostr = [ostr sprintf('%i    %%0=no percolation, 1=percolation+refreezing in snowlayer.  percolationyes\n', CC('percolationyes'))];
     ostr = [ostr sprintf('%i    %%0=no slush, 1=meltwater accumulation in snowlayer.  slushformationyes\n', CC('slushformationyes'))];
     ostr = [ostr sprintf('%i    %%0=no densification, 1=densific. of dry snow due to aging.  densificationyes\n', CC('densificationyes'))];
@@ -249,7 +237,7 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr sprintf('%i %i %i %i %i %i %i\n', CC('runoffyes'), CC('superyes'), CC('wateryes'), CC('surfwateryes'), CC('slushyes'), CC('coldsnowyes'), CC('coldtotyes'))];
 
     ostr = [ostr '%========================================================' char(10)];
-    ostr = [ostr '%   17.) TEMPERATURE INDEX METHOD' char(10)];
+    ostr = [ostr '%   16.) TEMPERATURE INDEX METHOD' char(10)];
     ostr = [ostr '%========================================================' char(10)];
     ostr = [ostr sprintf('%i    %%which temp index method (1,2 or 3).  ddmethod\n', CC('ddmethod'))];
     ostr = [ostr sprintf('%s    %%degree day factor for ice (only simple DDF method 1).  DDFice\n', dropZeros(CC('DDFice')))];
