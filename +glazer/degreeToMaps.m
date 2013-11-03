@@ -233,58 +233,47 @@ function c = degreeToMaps(s)
   c('qground') = str2double(lineposOffset(115, 1));
   c('jdstartr2diff') = str2double(lineposOffset(116, 1));
 
-  c('disyesopt') = toInt(lineposOffset(118, 1));
-  c('optkA') = (lineposOffset(119, 1));
-  c('startopt1') = str2double(lineposOffset(120, 1));
-  c('stepopt1') = str2double(lineposOffset(121, 1));
-  c('anzahlopt1') = toInt(lineposOffset(122, 1));
-  c('optkB') = (lineposOffset(123, 1));
-  c('startopt2') = str2double(lineposOffset(124, 1));
-  c('stepopt2') = str2double(lineposOffset(125, 1));
-  c('anzahlopt2') = toInt(lineposOffset(126, 1));
-  c('namematrix') = (lineposOffset(127, 1));
+  c('percolationyes') = toInt(lineposOffset(118, 1));
+  c('slushformationyes') = toInt(lineposOffset(119, 1));
+  c('densificationyes') = toInt(lineposOffset(120, 1));
+  c('wetstartyes') = toInt(lineposOffset(121, 1));
+  c('ndepths') = toInt(lineposOffset(122, 1));
+  c('factinter') = toInt(lineposOffset(123, 1));
 
-  c('percolationyes') = toInt(lineposOffset(129, 1));
-  c('slushformationyes') = toInt(lineposOffset(130, 1));
-  c('densificationyes') = toInt(lineposOffset(131, 1));
-  c('wetstartyes') = toInt(lineposOffset(132, 1));
-  c('ndepths') = toInt(lineposOffset(133, 1));
-  c('factinter') = toInt(lineposOffset(134, 1));
+  c('thicknessfirst') = str2double(lineposOffset(125, 1));
+  c('thicknessdeep') = str2double(lineposOffset(126, 1));
+  c('depthdeep') = str2double(lineposOffset(127, 1));
+  c('denssnow') = toInt(lineposOffset(128, 1));
+  c('irrwatercontyes') = toInt(lineposOffset(129, 1));
+  c('irrwatercont') = str2double(lineposOffset(130, 1));
 
-  c('thicknessfirst') = str2double(lineposOffset(136, 1));
-  c('thicknessdeep') = str2double(lineposOffset(137, 1));
-  c('depthdeep') = str2double(lineposOffset(138, 1));
-  c('denssnow') = toInt(lineposOffset(139, 1));
-  c('irrwatercontyes') = toInt(lineposOffset(140, 1));
-  c('irrwatercont') = str2double(lineposOffset(141, 1));
+  c('factsubsurfout') = toInt(lineposOffset(132, 1));
+  c('offsetsubsurfout') = toInt(lineposOffset(133, 1));
 
-  c('factsubsurfout') = toInt(lineposOffset(143, 1));
-  c('offsetsubsurfout') = toInt(lineposOffset(144, 1));
+  c('runoffyes') = toInt(lineposOffset(135, 1));
+  c('superyes') = toInt(lineposOffset(135, 2));
+  c('wateryes') = toInt(lineposOffset(135, 3));
+  c('surfwateryes') = toInt(lineposOffset(135, 4));
+  c('slushyes') = toInt(lineposOffset(135, 5));
+  c('coldsnowyes') = toInt(lineposOffset(135, 6));
+  c('coldtotyes') = toInt(lineposOffset(135, 7));
 
-  c('runoffyes') = toInt(lineposOffset(146, 1));
-  c('superyes') = toInt(lineposOffset(146, 2));
-  c('wateryes') = toInt(lineposOffset(146, 3));
-  c('surfwateryes') = toInt(lineposOffset(146, 4));
-  c('slushyes') = toInt(lineposOffset(146, 5));
-  c('coldsnowyes') = toInt(lineposOffset(146, 6));
-  c('coldtotyes') = toInt(lineposOffset(146, 7));
+  c('ddmethod') = toInt(lineposOffset(139, 1));
+  c('DDFice') = str2double(lineposOffset(140, 1));
+  c('DDFsnow') = str2double(lineposOffset(141, 1));
 
-  c('ddmethod') = toInt(lineposOffset(150, 1));
-  c('DDFice') = str2double(lineposOffset(151, 1));
-  c('DDFsnow') = str2double(lineposOffset(152, 1));
+  c('meltfactor') = str2double(lineposOffset(143, 1));
+  c('radfactorice') = str2double(lineposOffset(144, 1));
+  c('radfactorsnow') = str2double(lineposOffset(145, 1));
+  c('debrisfactor') = toInt(lineposOffset(146, 1));
 
-  c('meltfactor') = str2double(lineposOffset(154, 1));
-  c('radfactorice') = str2double(lineposOffset(155, 1));
-  c('radfactorsnow') = str2double(lineposOffset(156, 1));
-  c('debrisfactor') = toInt(lineposOffset(157, 1));
-
-  c('coordinatesyes') = toInt(lineposOffset(159, 1));
+  c('coordinatesyes') = toInt(lineposOffset(148, 1));
   
   %Read in the stake coords
   if c('maxmeltstakes') > 0
     fmt = c('coordinatesyes');
     stake_coords = [];
-    for ii = 160:(160 + c('maxmeltstakes') - 1)
+    for ii = 149:(149 + c('maxmeltstakes') - 1)
       thisStake = [coordFmt(fmt, lineposOffset(ii,1)), coordFmt(fmt,lineposOffset(ii,2))];
       %thisStake = arrayfun(@(y)coordFmt(fmt,y), thisStake);%, 'UniformOutput', false);
       stake_coords = [stake_coords; thisStake ];
