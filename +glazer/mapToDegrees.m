@@ -8,7 +8,7 @@ function ostr = mapToDegrees(CC)
 % The Map object must have a key for every parameter specified in
 % "input.txt".
 %
-%Args: CC - a dictionary containing all of the appropriate elements
+%Args: CC - a containers.Map containing all of the appropriate elements
 %Returns: ostr - string contianing  a valid input.txt for the Hock melt model
 
     ostr = [];
@@ -34,9 +34,11 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr sprintf('%i    %%snow cover to grid file at midnight.  snowyes\n', CC('snowyes'))];
     ostr = [ostr sprintf('%i    %%snow or surface written to file if jd dividable by this value.  daysnow\n', CC('daysnow'))];
     ostr = [ostr sprintf('%i    %%number of jd for output of surface type/snow cover.  numbersnowdaysout\n', CC('numbersnowdaysout'))];
-    jdsurfaceLoc = cell2mat(arrayfun(@(x) sprintf('%i ', x), CC('jdsurface'), 'uniformoutput', false));
+    if CC('numbersnowdaysout') ~=0
+      jdsurfaceLoc = cell2mat(arrayfun(@(x) sprintf('%i ', x), CC('jdsurface'), 'uniformoutput', false));
 
-    ostr = [ostr jdsurfaceLoc(1:end-1) char(10)];
+      ostr = [ostr jdsurfaceLoc(1:end-1) char(10)];
+    end
 
     ostr = [ostr '%----------- 2.) MASS BALANCE -------------------' char(10)];
     ostr = [ostr sprintf('%i    %%gridout winter mass balance yes=1, no=0.  winterbalyes\n', CC('winterbalyes'))];
@@ -264,10 +266,11 @@ function ostr = mapToDegrees(CC)
     ostr = [ostr stake_coordsLoc];
 
 end
-  
 
+
+% --- called above frequently to format numbers
 function s = dropZeros(f)
-% Helper function to drop trailing zeros from decimal representations.
+% Helper function to drop trailing zeros from decimal representations (e.g. turns 1.200000000000000 into 1.2).
 % This is a little slow.
 str = sprintf('%0.15f', f);
 re =regexp(str, '^0+(?!\.)|(?<!\.)0+$', 'split');
@@ -275,6 +278,7 @@ s = char(re(1));
 end
 
 
+% --- called above only for stake coordinates
 function s = fmtStakes(fmt, num)
 % Format Output-Stake locations to match
 % correct format given by 'coordinatesyes'

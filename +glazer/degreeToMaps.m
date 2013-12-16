@@ -7,7 +7,7 @@ function c = degreeToMaps(s)
 % Load strings containing valid DEBaM/DETIM v1.x.x input.txt files
 % into MATLAB containers.Map dictionaries, which may be manipulated.
 %
-% Args: s - String contining a full "input.txt" config file
+% Args: s - String containing a full "input.txt" config file
 % Returns: c - MATLAB containers.Map object, whose keys are the
 % names of parameters set in "input.txt" and whose values are the values
 % from said config file.
@@ -20,12 +20,12 @@ function c = degreeToMaps(s)
 %  ans = "/Users/luser/meltmodel/data/"
 %
 
-
-  eg = glazer.EntryGetter(s);
+  %EntryGetter is object created in @EntryGetter/EntryGetter.m 
+  eg = glazer.EntryGetter(s);   %s=input.txt
   
   c = containers.Map();
   
-  c('daysscreenoutput') = toInt(eg.linePos(3, 1));
+  c('daysscreenoutput') = toInt(eg.linePos(3, 1)); %line 3, word 1, convert to integer
   c('inpath') = (eg.linePos(4, 1));
   c('outpath') = (eg.linePos(5, 1));
   c('jdbeg') = toInt(eg.linePos(6, 1));
@@ -65,32 +65,46 @@ function c = degreeToMaps(s)
   c('snowyes') = toInt(eg.linePos(19, 1));
   c('daysnow') = toInt(eg.linePos(20, 1));
   c('numbersnowdaysout') = toInt(eg.linePos(21, 1));
-  c('jdsurface') = [toInt(eg.linePos(22, 1)), toInt(eg.linePos(22, 2))];
-
-  c('winterbalyes') = toInt(eg.linePos(24, 1));
-  c('winterjdbeg') = toInt(eg.linePos(25, 1));
-  c('winterjdend') = toInt(eg.linePos(25, 2));
-  c('summerbalyes') = toInt(eg.linePos(26, 1));
-  c('summerjdbeg') = toInt(eg.linePos(27, 1));
-  c('summerjdend') = toInt(eg.linePos(27, 2));
-  c('datesfromfileyes') = toInt(eg.linePos(28, 1));
-  c('namedatesmassbal') = (eg.linePos(29, 1));
-  c('beltwidth') = toInt(eg.linePos(30, 1));
-  c('snow2zeroeachyearyes') = toInt(eg.linePos(31, 1));
-  c('snowfreeyes') = toInt(eg.linePos(32, 1));
-
-  c('cumulmeltyes') = toInt(eg.linePos(34, 1));
-  c('cm_or_m') = toInt(eg.linePos(35, 1));
-  c('do_out_area') = toInt(eg.linePos(36, 1));
-  c('outgridnumber') = toInt(eg.linePos(37, 1));
   
-  % Read in 'outgrids'. this fails it 'outgridnumber' and the acutal number
+  
+  if c('numbersnowdaysout') == 0
+    offset = 0;
+    jdsurface = [];
+  else    
+    %preallocate jdsurface
+    offset = 1;
+    jdsurface = zeros(1,c('numbersnowdaysout'));
+    for ii = 1:c('numbersnowdaysout')
+      jdsurface(ii) = toInt(eg.linePos(22, ii));
+    end
+  end
+  
+  c('jdsurface') = jdsurface;
+
+  c('winterbalyes') = toInt(eg.linePos(23 + offset, 1));
+  c('winterjdbeg') = toInt(eg.linePos(24 + offset, 1));
+  c('winterjdend') = toInt(eg.linePos(24 + offset, 2));
+  c('summerbalyes') = toInt(eg.linePos(25 + offset, 1));
+  c('summerjdbeg') = toInt(eg.linePos(26 + offset, 1));
+  c('summerjdend') = toInt(eg.linePos(26 + offset, 2));
+  c('datesfromfileyes') = toInt(eg.linePos(27 + offset, 1));
+  c('namedatesmassbal') = (eg.linePos(28 + offset, 1));
+  c('beltwidth') = toInt(eg.linePos(29 + offset, 1));
+  c('snow2zeroeachyearyes') = toInt(eg.linePos(30 + offset, 1));
+  c('snowfreeyes') = toInt(eg.linePos(31 + offset, 1));
+
+  c('cumulmeltyes') = toInt(eg.linePos(33 + offset, 1));
+  c('cm_or_m') = toInt(eg.linePos(34 + offset, 1));
+  c('do_out_area') = toInt(eg.linePos(35 + offset, 1));
+  c('outgridnumber') = toInt(eg.linePos(36 + offset, 1));
+  
+  % Read in 'outgrids'. this fails if 'outgridnumber' and the actual number
   % of grids in the file mismatch
-  outGridOffset = 39 + c('outgridnumber');
+  outGridOffset = 38 + offset + c('outgridnumber');
   if c('outgridnumber')
     outgrids = {};
     for grid = 1:(c('outgridnumber') )
-      line = 39 + grid;
+      line = 38 + offset + grid;
       keySet = {'name', 'location', 'outglobnet'};
       keyValues = { (eg.linePos(line, 1)), [toInt(eg.linePos(line, 2)), toInt(eg.linePos(line, 3))], toInt(eg.linePos(line, 4))};
       thisGrid = containers.Map(keySet, keyValues);
@@ -286,13 +300,14 @@ function c = degreeToMaps(s)
 end
 
 
+% called several times above
 function i = toInt(s)
 % Convert strings to Integers not floats
-  ss = str2num(s);
-  i = int32(ss);
+  ss = str2num(s); %converts string to float
+  i = int32(ss); %convert float to integer
 end
 
-
+% called above once for stake coordinates
 function e = coordFmt(fmt, str)
 % convert output-stake coordinates 
 % to corect type given 'coordinateyes'
