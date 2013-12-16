@@ -18,7 +18,8 @@ output/    %Path for Outputfiles.  outpath
 0    %surface conditions to grid file (2=for specified JDs).  surfyes
 1    %snow cover to grid file at midnight.  snowyes
 2    %snow or surface written to file if jd dividable by this value.  daysnow
-0    %number of jd for output of surface type/snow cover.  numbersnowdaysout
+2    %number of jd for output of surface type/snow cover.  numbersnowdaysout
+190 210
 %----------- 2.) MASS BALANCE -------------------
 0    %gridout winter mass balance yes=1, no=0.  winterbalyes
 244  135    %julian day winter starts and ends.  winterjdbeg  winterjdend
@@ -183,6 +184,6 @@ discharge.txt     %name of discharge output file.  nameqcalc
 4.0    %radiation melt factor for snow.  radfactorsnow
 5    %factor to reduce melt over debris.  debrisfactor
 %******* 18.) OUTPUT STAKES **************************************
-1    %1=stake locations given in local coordinates (x,y), 2=as 1 but center, 3=row/col.  coordinatesyes
-1.0 2.0
-3.0 4.0
+3    %1=stake locations given in local coordinates (x,y), 2=as 1 but center, 3=row/col.  coordinatesyes
+1 2
+3 4

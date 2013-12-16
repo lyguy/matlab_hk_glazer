@@ -18,8 +18,7 @@ output/    %Path for Outputfiles.  outpath
 0    %surface conditions to grid file (2=for specified JDs).  surfyes
 1    %snow cover to grid file at midnight.  snowyes
 2    %snow or surface written to file if jd dividable by this value.  daysnow
-2    %number of jd for output of surface type/snow cover.  numbersnowdaysout
-190 210
+0    %number of jd for output of surface type/snow cover.  numbersnowdaysout
 %----------- 2.) MASS BALANCE -------------------
 0    %gridout winter mass balance yes=1, no=0.  winterbalyes
 244  135    %julian day winter starts and ends.  winterjdbeg  winterjdend
@@ -102,7 +101,7 @@ clim.txt    %name of climate data file.  nameklima
 0 39.0 40.0 41.0 42.0 43.0 44.0 45.0 46.0 47.0 48.0 49.0 50.0    %monthtempscen(yes)
 1 51.0 52.0 53.0 54.0 55.0 56.0 57.0 58.0 59.0 60.0 61.0 62.0    %monthprecipscen(yes)
 %******** 8.) SURFACE TYPE / ALBEDO ***********************************
-63    %number of transient surface type files
+0    %number of transient surface type files
 0.64    %albedo for snow and firn (fixed value).  albsnow
 0.65    %albedo for slush.  albslush
 0.66    %albedo for ice.  albice

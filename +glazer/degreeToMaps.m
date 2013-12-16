@@ -73,7 +73,7 @@ function c = degreeToMaps(s)
   else    
     %preallocate jdsurface
     offset = 1;
-    jdsurface = zeros(1,c('numbersnowdaysout'));
+    jdsurface = zeros(1, c('numbersnowdaysout'));
     for ii = 1:c('numbersnowdaysout')
       jdsurface(ii) = toInt(eg.linePos(22, ii));
     end
