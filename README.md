@@ -1,4 +1,4 @@
-# Glazer 0.0.4
+# Glazer 0.0.5
 
 This is a part of the Hock Melt Model: a tool to import and output valid input.txt files into MATLAB Maps.
 
