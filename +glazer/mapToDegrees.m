@@ -158,6 +158,15 @@ function ostr = mapToDegrees(CC)
 
     ostr = [ostr '%******** 8.) SURFACE TYPE / ALBEDO ***********************************' char(10)];
     ostr = [ostr sprintf('%i    %%number of transient surface type files\n', CC('n_albfiles'))];
+    
+    if CC('n_albfiles')
+      jdstartalb = CC('jdstartalb');
+      namealb = CC('namealb');
+      for albfile = 1:CC('n_albfiles')
+        ostr = [ostr sprintf('%s %s\n',dropZeros(jdstartalb{albfile}), namealb{albfile})];
+      end
+    end
+    
     ostr = [ostr sprintf('%s    %%albedo for snow and firn (fixed value).  albsnow\n', dropZeros(CC('albsnow')))];
     ostr = [ostr sprintf('%s    %%albedo for slush.  albslush\n', dropZeros(CC('albslush')))];
     ostr = [ostr sprintf('%s    %%albedo for ice.  albice\n', dropZeros(CC('albice')))];

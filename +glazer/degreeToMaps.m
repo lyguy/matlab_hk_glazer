@@ -193,6 +193,26 @@ function c = degreeToMaps(s)
 
 
   c('n_albfiles') = toInt(lineposOffset(64, 1));
+  
+  albOffset = outGridOffset + c('n_albfiles');
+  if c('n_albfiles')
+    jdstartalb = {};
+    namealb = {};
+    for albfile = 1:(c('n_albfiles'))
+      line = 64 + albfile;
+      jdstartalb{albfile} = str2double(lineposOffset(line, 1));
+      namealb{albfile} = lineposOffset(line, 2);
+    end
+    c('jdstartalb') = jdstartalb;
+    c('namealb') = namealb;
+  else
+    c('jdstartalb') = {};
+    c('namealb') = {};
+  end
+  
+  %REDEFINE lineposOffset
+  lineposOffset = @(line, pos)   eg.linePos(line + albOffset, pos); 
+  
   c('albsnow') = str2double(lineposOffset(65, 1));
   c('albslush') = str2double(lineposOffset(66, 1));
   c('albice') = str2double(lineposOffset(67, 1));

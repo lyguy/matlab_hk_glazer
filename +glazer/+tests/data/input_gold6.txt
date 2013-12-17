@@ -102,9 +102,9 @@ clim.txt    %name of climate data file.  nameklima
 1 51.0 52.0 53.0 54.0 55.0 56.0 57.0 58.0 59.0 60.0 61.0 62.0    %monthprecipscen(yes)
 %******** 8.) SURFACE TYPE / ALBEDO ***********************************
 3    %number of transient surface type files
-111 alb1
-222 alb2
-333 alb3
+111.0 alb1
+222.0 alb2
+333.0 alb3
 0.64    %albedo for snow and firn (fixed value).  albsnow
 0.65    %albedo for slush.  albslush
 0.66    %albedo for ice.  albice
