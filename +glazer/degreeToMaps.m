@@ -25,88 +25,95 @@ function c = degreeToMaps(s)
   
   c = containers.Map();
   
-  c('daysscreenoutput') = toInt(eg.linePos(3, 1)); %line 3, word 1, convert to integer
-  c('inpath') = (eg.linePos(4, 1));
-  c('outpath') = (eg.linePos(5, 1));
-  c('jdbeg') = toInt(eg.linePos(6, 1));
-  c('yearbeg') = toInt(eg.linePos(6, 2));
-  c('jdend') = toInt(eg.linePos(7, 1));
-  c('yearend') = toInt(eg.linePos(7, 2));
-  c('disyes') = toInt(eg.linePos(8, 1));
-  c('calcgridyes') = toInt(eg.linePos(9, 1));
+  correction = 0;
+  linePosOffset = @(line, pos)   eg.linePos(line + correction, pos);
   
-  c('maxmeltstakes') = toInt(eg.linePos(11, 1));
-  c('plusminus') = toInt(eg.linePos(12, 1));
-  c('do_out') = toInt(eg.linePos(13, 1));
+  c('daysscreenoutput') = toInt(linePosOffset(3, 1)); %line 3, word 1, convert to integer
+  c('inpath') = (linePosOffset(4, 1));
+  c('outpath') = (linePosOffset(5, 1));
+  c('jdbeg') = toInt(linePosOffset(6, 1));
+  c('yearbeg') = toInt(linePosOffset(6, 2));
+  c('jdend') = toInt(linePosOffset(7, 1));
+  c('yearend') = toInt(linePosOffset(7, 2));
+  c('disyes') = toInt(linePosOffset(8, 1));
+  c('calcgridyes') = toInt(linePosOffset(9, 1));
+  
+  c('maxmeltstakes') = toInt(linePosOffset(11, 1));
+  c('plusminus') = toInt(linePosOffset(12, 1));
+  c('do_out') = toInt(linePosOffset(13, 1));
 
-  c('shayes') = toInt(eg.linePos(15, 1));
-  c('exkyes') = toInt(eg.linePos(15, 2));
-  c('solyes') = toInt(eg.linePos(15, 3));
-  c('diryes') = toInt(eg.linePos(15, 4));
-  c('dir2yes') = toInt(eg.linePos(15, 5));
-  c('difyes') = toInt(eg.linePos(15, 6));
-  c('gloyes') = toInt(eg.linePos(15, 7));
-  c('albyes') = toInt(eg.linePos(15, 8));
-  c('swbyes') = toInt(eg.linePos(15, 9));
-  c('linyes') = toInt(eg.linePos(15, 10));
-  c('loutyes') = toInt(eg.linePos(15, 11));
-  c('netyes') = toInt(eg.linePos(17, 1));
-  c('senyes') = toInt(eg.linePos(17, 2));
-  c('latyes') = toInt(eg.linePos(17, 3));
-  c('raiyes') = toInt(eg.linePos(17, 4));
-  c('enbyes') = toInt(eg.linePos(17, 5));
-  c('melyes') = toInt(eg.linePos(17, 6));
-  c('ablyes') = toInt(eg.linePos(17, 7));
-  c('surftempyes') = toInt(eg.linePos(17, 8));
-  c('posyes') = toInt(eg.linePos(17, 9));
-  c('ddfyes') = toInt(eg.linePos(17, 10));
+  c('shayes') = toInt(linePosOffset(15, 1));
+  c('exkyes') = toInt(linePosOffset(15, 2));
+  c('solyes') = toInt(linePosOffset(15, 3));
+  c('diryes') = toInt(linePosOffset(15, 4));
+  c('dir2yes') = toInt(linePosOffset(15, 5));
+  c('difyes') = toInt(linePosOffset(15, 6));
+  c('gloyes') = toInt(linePosOffset(15, 7));
+  c('albyes') = toInt(linePosOffset(15, 8));
+  c('swbyes') = toInt(linePosOffset(15, 9));
+  c('linyes') = toInt(linePosOffset(15, 10));
+  c('loutyes') = toInt(linePosOffset(15, 11));
+  c('netyes') = toInt(linePosOffset(17, 1));
+  c('senyes') = toInt(linePosOffset(17, 2));
+  c('latyes') = toInt(linePosOffset(17, 3));
+  c('raiyes') = toInt(linePosOffset(17, 4));
+  c('enbyes') = toInt(linePosOffset(17, 5));
+  c('melyes') = toInt(linePosOffset(17, 6));
+  c('ablyes') = toInt(linePosOffset(17, 7));
+  c('surftempyes') = toInt(linePosOffset(17, 8));
+  c('posyes') = toInt(linePosOffset(17, 9));
+  c('ddfyes') = toInt(linePosOffset(17, 10));
 
-  c('surfyes') = toInt(eg.linePos(18, 1));
-  c('snowyes') = toInt(eg.linePos(19, 1));
-  c('daysnow') = toInt(eg.linePos(20, 1));
-  c('numbersnowdaysout') = toInt(eg.linePos(21, 1));
+  c('surfyes') = toInt(linePosOffset(18, 1));
+  c('snowyes') = toInt(linePosOffset(19, 1));
+  c('daysnow') = toInt(linePosOffset(20, 1));
+  c('numbersnowdaysout') = toInt(linePosOffset(21, 1));
   
   
   if c('numbersnowdaysout') == 0
-    offset = 0;
+    correction = 0;
     jdsurface = [];
   else    
     %preallocate jdsurface
-    offset = 1;
+    correction = 1;
     jdsurface = zeros(1, c('numbersnowdaysout'));
     for ii = 1:c('numbersnowdaysout')
-      jdsurface(ii) = toInt(eg.linePos(22, ii));
+      jdsurface(ii) = toInt(linePosOffset(22, ii));
     end
   end
   
+  % update linePosOffset:w
+  
+  linePosOffset = @(line, pos)   eg.linePos(line + correction, pos);
+  
   c('jdsurface') = jdsurface;
 
-  c('winterbalyes') = toInt(eg.linePos(23 + offset, 1));
-  c('winterjdbeg') = toInt(eg.linePos(24 + offset, 1));
-  c('winterjdend') = toInt(eg.linePos(24 + offset, 2));
-  c('summerbalyes') = toInt(eg.linePos(25 + offset, 1));
-  c('summerjdbeg') = toInt(eg.linePos(26 + offset, 1));
-  c('summerjdend') = toInt(eg.linePos(26 + offset, 2));
-  c('datesfromfileyes') = toInt(eg.linePos(27 + offset, 1));
-  c('namedatesmassbal') = (eg.linePos(28 + offset, 1));
-  c('beltwidth') = toInt(eg.linePos(29 + offset, 1));
-  c('snow2zeroeachyearyes') = toInt(eg.linePos(30 + offset, 1));
-  c('snowfreeyes') = toInt(eg.linePos(31 + offset, 1));
+  c('winterbalyes') = toInt(linePosOffset(23, 1));
+  c('winterjdbeg') = toInt(linePosOffset(24, 1));
+  c('winterjdend') = toInt(linePosOffset(24, 2));
+  c('summerbalyes') = toInt(linePosOffset(25, 1));
+  c('summerjdbeg') = toInt(linePosOffset(26, 1));
+  c('summerjdend') = toInt(linePosOffset(26, 2));
+  c('datesfromfileyes') = toInt(linePosOffset(27, 1));
+  c('namedatesmassbal') = (linePosOffset(28, 1));
+  c('beltwidth') = toInt(linePosOffset(29, 1));
+  c('snow2zeroeachyearyes') = toInt(linePosOffset(30, 1));
+  c('snowfreeyes') = toInt(linePosOffset(31, 1));
 
-  c('cumulmeltyes') = toInt(eg.linePos(33 + offset, 1));
-  c('cm_or_m') = toInt(eg.linePos(34 + offset, 1));
-  c('do_out_area') = toInt(eg.linePos(35 + offset, 1));
-  c('outgridnumber') = toInt(eg.linePos(36 + offset, 1));
+  c('cumulmeltyes') = toInt(linePosOffset(33, 1));
+  c('cm_or_m') = toInt(linePosOffset(34, 1));
+  c('do_out_area') = toInt(linePosOffset(35, 1));
+  c('outgridnumber') = toInt(linePosOffset(36, 1));
   
   % Read in 'outgrids'. this fails if 'outgridnumber' and the actual number
   % of grids in the file mismatch
-  outGridOffset = 38 + offset + c('outgridnumber');
+  outGridOffset = 38 + correction + c('outgridnumber');
   if c('outgridnumber')
     outgrids = {};
     for grid = 1:(c('outgridnumber') )
-      line = 38 + offset + grid;
+      line = 38 + correction + grid;
       keySet = {'name', 'location', 'outglobnet'};
-      keyValues = { (eg.linePos(line, 1)), [toInt(eg.linePos(line, 2)), toInt(eg.linePos(line, 3))], toInt(eg.linePos(line, 4))};
+      keyValues = { (linePosOffset(line, 1)), [toInt(linePosOffset(line, 2)), toInt(linePosOffset(line, 3))], toInt(linePosOffset(line, 4))};
       thisGrid = containers.Map(keySet, keyValues);
       outgrids{end+1}= thisGrid;
     end
