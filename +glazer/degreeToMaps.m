@@ -82,7 +82,7 @@ function c = degreeToMaps(s)
     end
   end
   
-  % update linePosOffset:w
+  % update linePosOffset
   
   linePosOffset = @(line, pos)   eg.linePos(line + correction, pos);
   
