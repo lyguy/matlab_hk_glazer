@@ -107,7 +107,7 @@ function c = degreeToMaps(s)
   
   % Read in 'outgrids'. this fails if 'outgridnumber' and the actual number
   % of grids in the file mismatch
-  outGridOffset = 38 + correction + c('outgridnumber');
+  outGridOffset = correction + c('outgridnumber');
   if c('outgridnumber')
     outgrids = {};
     for grid = 1:(c('outgridnumber') )
@@ -127,88 +127,88 @@ function c = degreeToMaps(s)
   % of the options _after_ the outgrids are finished
   lineposOffset = @(line, pos)   eg.linePos(line + outGridOffset, pos); 
  
-  c('methodinisnow') = toInt(lineposOffset(2, 1));
-  c('methodsnowalbedo') = toInt(lineposOffset(3, 1));
-  c('methodglobal') = toInt(lineposOffset(4, 1));
-  c('methodlonginstation') = toInt(lineposOffset(5, 1));
-  c('methodlongin') = toInt(lineposOffset(6, 1));
-  c('methodsurftempglac') = toInt(lineposOffset(7, 1));
+  c('methodinisnow') = toInt(lineposOffset(40, 1));
+  c('methodsnowalbedo') = toInt(lineposOffset(41, 1));
+  c('methodglobal') = toInt(lineposOffset(42, 1));
+  c('methodlonginstation') = toInt(lineposOffset(43, 1));
+  c('methodlongin') = toInt(lineposOffset(44, 1));
+  c('methodsurftempglac') = toInt(lineposOffset(45, 1));
 
-  c('methodturbul') = toInt(lineposOffset(9, 1));
-  c('method_z0Te') = toInt(lineposOffset(10, 1));
-  c('methodiceheat') = toInt(lineposOffset(11, 1));
-  c('methodnegbal') = toInt(lineposOffset(12, 1));
+  c('methodturbul') = toInt(lineposOffset(47, 1));
+  c('method_z0Te') = toInt(lineposOffset(48, 1));
+  c('methodiceheat') = toInt(lineposOffset(49, 1));
+  c('methodnegbal') = toInt(lineposOffset(50, 1));
 
-  c('scalingyes') = toInt(lineposOffset(14, 1));
-  c('gamma') = str2double(lineposOffset(15, 1));
-  c('c_coefficient') = str2double(lineposOffset(16, 1));
+  c('scalingyes') = toInt(lineposOffset(52, 1));
+  c('gamma') = str2double(lineposOffset(53, 1));
+  c('c_coefficient') = str2double(lineposOffset(54, 1));
 
-  c('namedgm') = (lineposOffset(18, 1));
-  c('namedgmdrain') = (lineposOffset(19, 1));
-  c('namedgmglac') = (lineposOffset(20, 1));
-  c('namedgmslope') = (lineposOffset(21, 1));
-  c('namedgmaspect') = (lineposOffset(22, 1));
-  c('namedgmskyview') = (lineposOffset(23, 1));
-  c('namedgmfirn') = (lineposOffset(24, 1));
-  c('nameinitialsnow') = (lineposOffset(25, 1));
-  c('nameklima') = (lineposOffset(26, 1));
+  c('namedgm') = (lineposOffset(56, 1));
+  c('namedgmdrain') = (lineposOffset(57, 1));
+  c('namedgmglac') = (lineposOffset(58, 1));
+  c('namedgmslope') = (lineposOffset(59, 1));
+  c('namedgmaspect') = (lineposOffset(60, 1));
+  c('namedgmskyview') = (lineposOffset(61, 1));
+  c('namedgmfirn') = (lineposOffset(62, 1));
+  c('nameinitialsnow') = (lineposOffset(63, 1));
+  c('nameklima') = (lineposOffset(64, 1));
 
-  c('laenge') = str2double(lineposOffset(28, 1));
-  c('breite') = str2double(lineposOffset(29, 1));
-  c('reflongitude') = str2double(lineposOffset(30, 1));
-  c('rowclim') = toInt(lineposOffset(31, 1));
-  c('colclim') = toInt(lineposOffset(32, 1));
-  c('climoutsideyes') = toInt(lineposOffset(33, 1));
-  c('heightclim') = toInt(lineposOffset(33, 2));
-  c('gridsize') = toInt(lineposOffset(34, 1));
-  c('timestep') = toInt(lineposOffset(35, 1));
+  c('laenge') = str2double(lineposOffset(66, 1));
+  c('breite') = str2double(lineposOffset(67, 1));
+  c('reflongitude') = str2double(lineposOffset(68, 1));
+  c('rowclim') = toInt(lineposOffset(69, 1));
+  c('colclim') = toInt(lineposOffset(70, 1));
+  c('climoutsideyes') = toInt(lineposOffset(71, 1));
+  c('heightclim') = toInt(lineposOffset(71, 2));
+  c('gridsize') = toInt(lineposOffset(72, 1));
+  c('timestep') = toInt(lineposOffset(73, 1));
 
-  c('formatclimdata') = toInt(lineposOffset(37, 1));
-  c('maxcol') = toInt(lineposOffset(38, 1));
+  c('formatclimdata') = toInt(lineposOffset(75, 1));
+  c('maxcol') = toInt(lineposOffset(76, 1));
 
-  c('coltemp') = toInt(lineposOffset(39, 1));
-  c('colhum') = toInt(lineposOffset(40, 1));
-  c('colwind') = toInt(lineposOffset(41, 1));
-  c('colglob') = toInt(lineposOffset(42, 1));
-  c('colref') = toInt(lineposOffset(43, 1));
-  c('colnet') = toInt(lineposOffset(44, 1));
-  c('collongin') = toInt(lineposOffset(45, 1));
-  c('collongout') = toInt(lineposOffset(46, 1));
-  c('colprec') = toInt(lineposOffset(47, 1));
-  c('colcloud') = toInt(lineposOffset(48, 1));
-  c('coltempgradvarying') = toInt(lineposOffset(49, 1));
-  c('coldis') = toInt(lineposOffset(50, 1));
+  c('coltemp') = toInt(lineposOffset(77, 1));
+  c('colhum') = toInt(lineposOffset(78, 1));
+  c('colwind') = toInt(lineposOffset(79, 1));
+  c('colglob') = toInt(lineposOffset(80, 1));
+  c('colref') = toInt(lineposOffset(81, 1));
+  c('colnet') = toInt(lineposOffset(82, 1));
+  c('collongin') = toInt(lineposOffset(83, 1));
+  c('collongout') = toInt(lineposOffset(84, 1));
+  c('colprec') = toInt(lineposOffset(85, 1));
+  c('colcloud') = toInt(lineposOffset(86, 1));
+  c('coltempgradvarying') = toInt(lineposOffset(87, 1));
+  c('coldis') = toInt(lineposOffset(88, 1));
 
-  c('ERAtempshift') = toInt(lineposOffset(52, 1));
-  c('ERAwindshift') = toInt(lineposOffset(53, 1));
+  c('ERAtempshift') = toInt(lineposOffset(90, 1));
+  c('ERAwindshift') = toInt(lineposOffset(91, 1));
 
-  c('methodtempinterpol') = toInt(lineposOffset(55, 1));
-  c('tempgrad') = str2double(lineposOffset(56, 1));
-  c('tempscenario') = toInt(lineposOffset(57, 1));
-  c('precscenario') = toInt(lineposOffset(58, 1));
-  c('monthtempgradyes') = toInt(lineposOffset(60, 1));
+  c('methodtempinterpol') = toInt(lineposOffset(93, 1));
+  c('tempgrad') = str2double(lineposOffset(94, 1));
+  c('tempscenario') = toInt(lineposOffset(95, 1));
+  c('precscenario') = toInt(lineposOffset(96, 1));
+  c('monthtempgradyes') = toInt(lineposOffset(98, 1));
   
-  c('monthtempgrad') = arrayfun(@(y)str2double(lineposOffset(60,y)), 2:13);
+  c('monthtempgrad') = arrayfun(@(y)str2double(lineposOffset(98, y)), 2:13);
   %float(lineposOffset(59,x)) for x in range(1,13));
     
-  c('monthtempscenyes') = toInt(lineposOffset(61, 1));
-  c('monthtempscen') = arrayfun(@(y)str2double(lineposOffset(61,y)), 2:13);
+  c('monthtempscenyes') = toInt(lineposOffset(99, 1));
+  c('monthtempscen') = arrayfun(@(y)str2double(lineposOffset(99, y)), 2:13);
   %(float(lineposOffset(60,x)) for x in range(1,13));
-  c('monthprecipscenyes') = toInt(lineposOffset(62, 1));
-  c('monthprecipscen') = arrayfun(@(y)str2double(lineposOffset(62,y)), 2:13);
+  c('monthprecipscenyes') = toInt(lineposOffset(100, 1));
+  c('monthprecipscen') = arrayfun(@(y)str2double(lineposOffset(100, y)), 2:13);
   %(float(lineposOffset(61,x)) for x in range(1,13));
 
 
-  c('n_albfiles') = toInt(lineposOffset(64, 1));
+  c('n_albfiles') = toInt(lineposOffset(102, 1));
   
-  albOffset = outGridOffset + c('n_albfiles');
+  albOffset = 38 + outGridOffset + c('n_albfiles');
   if c('n_albfiles')
     jdstartalb = {};
     namealb = {};
     for albfile = 1:(c('n_albfiles'))
       line = 64 + albfile;
-      jdstartalb{albfile} = str2double(lineposOffset(line, 1));
-      namealb{albfile} = lineposOffset(line, 2);
+      jdstartalb{albfile} = str2double(lineposOffset(line + 38, 1));
+      namealb{albfile} = lineposOffset(line + 38, 2);
     end
     c('jdstartalb') = jdstartalb;
     c('namealb') = namealb;
