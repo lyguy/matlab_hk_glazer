@@ -1,12 +1,19 @@
+### 0.0.6 (03/6/2015)
+Refactor of degreesToMaps to make line numbering more consistent throughout the
+file
+
 ### 0.0.5 (12/17/2013)
 Significant bugfixes:
   * Closes issue #1: The length of '''jdsurface''' is now determined by 
     '''numbersnowdaysout''' instead of being fixed to two entries
   * Closes issue #2 where in '''jdstartalb''' and '''namealb''' are not read correctly.
+
 ### 0.0.4 (11/3/2012)
 Updated to work with input.txt for meltmodels v2.X.X
+
 ### 0.0.3
 Fixed filename- function-name mismatch
 Last version to work with models <= 1.x
+
 ### 0.0.2
 Fixed bug wherein tabs are not read as whitespace
