@@ -201,14 +201,14 @@ function c = degreeToMaps(s)
 
   c('n_albfiles') = toInt(lineposOffset(102, 1));
   
-  albOffset = 38 + outGridOffset + c('n_albfiles');
+  albOffset = outGridOffset + c('n_albfiles');
   if c('n_albfiles')
     jdstartalb = {};
     namealb = {};
     for albfile = 1:(c('n_albfiles'))
-      line = 64 + albfile;
-      jdstartalb{albfile} = str2double(lineposOffset(line + 38, 1));
-      namealb{albfile} = lineposOffset(line + 38, 2);
+      line = 102 + albfile;
+      jdstartalb{albfile} = str2double(lineposOffset(line, 1));
+      namealb{albfile} = lineposOffset(line, 2);
     end
     c('jdstartalb') = jdstartalb;
     c('namealb') = namealb;
@@ -220,102 +220,102 @@ function c = degreeToMaps(s)
   %REDEFINE lineposOffset
   lineposOffset = @(line, pos)   eg.linePos(line + albOffset, pos); 
   
-  c('albsnow') = str2double(lineposOffset(65, 1));
-  c('albslush') = str2double(lineposOffset(66, 1));
-  c('albice') = str2double(lineposOffset(67, 1));
-  c('albfirn') = str2double(lineposOffset(68, 1));
-  c('albrock') = str2double(lineposOffset(69, 1));
-  c('albmin') = str2double(lineposOffset(70, 1));
-  c('snowalbincrease') = str2double(lineposOffset(71, 1));
-  c('albiceproz') = str2double(lineposOffset(72, 1));
-  c('ndstart') = toInt(lineposOffset(73, 1));
+  c('albsnow') = str2double(lineposOffset(103, 1));
+  c('albslush') = str2double(lineposOffset(104, 1));
+  c('albice') = str2double(lineposOffset(105, 1));
+  c('albfirn') = str2double(lineposOffset(106, 1));
+  c('albrock') = str2double(lineposOffset(107, 1));
+  c('albmin') = str2double(lineposOffset(108, 1));
+  c('snowalbincrease') = str2double(lineposOffset(109, 1));
+  c('albiceproz') = str2double(lineposOffset(110, 1));
+  c('ndstart') = toInt(lineposOffset(111, 1));
 
-  c('split') = toInt(lineposOffset(75, 1));
-  c('prozdiffuse') = str2double(lineposOffset(76, 1));
-  c('trans') = str2double(lineposOffset(77, 1));
-  c('ratio') = str2double(lineposOffset(78, 1));
-  c('ratiodir2dir') = str2double(lineposOffset(79, 1));
-  c('surftemplapserate') = str2double(lineposOffset(80, 1));
-  c('directfromfile') = toInt(lineposOffset(81, 1));
-  c('pathdirectfile') = (lineposOffset(82, 1));
-  c('daysdirect') = toInt(lineposOffset(83, 1));
-  c('slopestation') = str2double(lineposOffset(84, 1));
+  c('split') = toInt(lineposOffset(113, 1));
+  c('prozdiffuse') = str2double(lineposOffset(114, 1));
+  c('trans') = str2double(lineposOffset(115, 1));
+  c('ratio') = str2double(lineposOffset(116, 1));
+  c('ratiodir2dir') = str2double(lineposOffset(117, 1));
+  c('surftemplapserate') = str2double(lineposOffset(118, 1));
+  c('directfromfile') = toInt(lineposOffset(119, 1));
+  c('pathdirectfile') = (lineposOffset(120, 1));
+  c('daysdirect') = toInt(lineposOffset(121, 1));
+  c('slopestation') = str2double(lineposOffset(122, 1));
 
-  c('iterstep') = str2double(lineposOffset(86, 1));
-  c('z0wice') = str2double(lineposOffset(87, 1));
-  c('dividerz0T') = str2double(lineposOffset(88, 1));
-  c('dividerz0snow') = str2double(lineposOffset(89, 1));
-  c('z0proz') = str2double(lineposOffset(90, 1));
-  c('icez0min') = str2double(lineposOffset(91, 1));
-  c('icez0max') = str2double(lineposOffset(92, 1));
+  c('iterstep') = str2double(lineposOffset(124, 1));
+  c('z0wice') = str2double(lineposOffset(125, 1));
+  c('dividerz0T') = str2double(lineposOffset(126, 1));
+  c('dividerz0snow') = str2double(lineposOffset(127, 1));
+  c('z0proz') = str2double(lineposOffset(128, 1));
+  c('icez0min') = str2double(lineposOffset(129, 1));
+  c('icez0max') = str2double(lineposOffset(130, 1));
 
-  c('methodprecipinterpol') = toInt(lineposOffset(94, 1));
-  c('precgrad') = str2double(lineposOffset(95, 1));
-  c('precgradhigh') = str2double(lineposOffset(96, 1));
-  c('precgradelev') = toInt(lineposOffset(96, 2));
-  c('preccorr') = str2double(lineposOffset(97, 1));
-  c('snowmultiplierglacier') = str2double(lineposOffset(98, 1));
-  c('snowmultiplierrock') = str2double(lineposOffset(99, 1));
-  c('threshtemp') = str2double(lineposOffset(100, 1));
-  c('onlyglacieryes') = toInt(lineposOffset(101, 1));
-  c('glacierpart') = str2double(lineposOffset(102, 1));
+  c('methodprecipinterpol') = toInt(lineposOffset(132, 1));
+  c('precgrad') = str2double(lineposOffset(133, 1));
+  c('precgradhigh') = str2double(lineposOffset(134, 1));
+  c('precgradelev') = toInt(lineposOffset(134, 2));
+  c('preccorr') = str2double(lineposOffset(135, 1));
+  c('snowmultiplierglacier') = str2double(lineposOffset(136, 1));
+  c('snowmultiplierrock') = str2double(lineposOffset(137, 1));
+  c('threshtemp') = str2double(lineposOffset(138, 1));
+  c('onlyglacieryes') = toInt(lineposOffset(139, 1));
+  c('glacierpart') = str2double(lineposOffset(140, 1));
 
-  c('nameqcalc') = (lineposOffset(104, 1));
-  c('nodis') = toInt(lineposOffset(105, 1));
-  c('firnkons') = toInt(lineposOffset(106, 1));
-  c('snowkons') = toInt(lineposOffset(107, 1));
-  c('icekons') = toInt(lineposOffset(108, 1));
-  c('rockkons') = toInt(lineposOffset(109, 1));
+  c('nameqcalc') = (lineposOffset(142, 1));
+  c('nodis') = toInt(lineposOffset(143, 1));
+  c('firnkons') = toInt(lineposOffset(144, 1));
+  c('snowkons') = toInt(lineposOffset(145, 1));
+  c('icekons') = toInt(lineposOffset(146, 1));
+  c('rockkons') = toInt(lineposOffset(147, 1));
 
-  c('qfirnstart') = str2double(lineposOffset(111, 1));
-  c('qsnowstart') = str2double(lineposOffset(112, 1));
-  c('qicestart') = str2double(lineposOffset(113, 1));
-  c('qrockstart') = str2double(lineposOffset(114, 1));
-  c('qground') = str2double(lineposOffset(115, 1));
-  c('jdstartr2diff') = str2double(lineposOffset(116, 1));
+  c('qfirnstart') = str2double(lineposOffset(149, 1));
+  c('qsnowstart') = str2double(lineposOffset(150, 1));
+  c('qicestart') = str2double(lineposOffset(151, 1));
+  c('qrockstart') = str2double(lineposOffset(152, 1));
+  c('qground') = str2double(lineposOffset(153, 1));
+  c('jdstartr2diff') = str2double(lineposOffset(154, 1));
 
-  c('percolationyes') = toInt(lineposOffset(118, 1));
-  c('slushformationyes') = toInt(lineposOffset(119, 1));
-  c('densificationyes') = toInt(lineposOffset(120, 1));
-  c('wetstartyes') = toInt(lineposOffset(121, 1));
-  c('ndepths') = toInt(lineposOffset(122, 1));
-  c('factinter') = toInt(lineposOffset(123, 1));
+  c('percolationyes') = toInt(lineposOffset(156, 1));
+  c('slushformationyes') = toInt(lineposOffset(157, 1));
+  c('densificationyes') = toInt(lineposOffset(158, 1));
+  c('wetstartyes') = toInt(lineposOffset(159, 1));
+  c('ndepths') = toInt(lineposOffset(160, 1));
+  c('factinter') = toInt(lineposOffset(161, 1));
 
-  c('thicknessfirst') = str2double(lineposOffset(125, 1));
-  c('thicknessdeep') = str2double(lineposOffset(126, 1));
-  c('depthdeep') = str2double(lineposOffset(127, 1));
-  c('denssnow') = toInt(lineposOffset(128, 1));
-  c('irrwatercontyes') = toInt(lineposOffset(129, 1));
-  c('irrwatercont') = str2double(lineposOffset(130, 1));
+  c('thicknessfirst') = str2double(lineposOffset(163, 1));
+  c('thicknessdeep') = str2double(lineposOffset(164, 1));
+  c('depthdeep') = str2double(lineposOffset(165, 1));
+  c('denssnow') = toInt(lineposOffset(166, 1));
+  c('irrwatercontyes') = toInt(lineposOffset(167, 1));
+  c('irrwatercont') = str2double(lineposOffset(168, 1));
 
-  c('factsubsurfout') = toInt(lineposOffset(132, 1));
-  c('offsetsubsurfout') = toInt(lineposOffset(133, 1));
+  c('factsubsurfout') = toInt(lineposOffset(170, 1));
+  c('offsetsubsurfout') = toInt(lineposOffset(171, 1));
 
-  c('runoffyes') = toInt(lineposOffset(135, 1));
-  c('superyes') = toInt(lineposOffset(135, 2));
-  c('wateryes') = toInt(lineposOffset(135, 3));
-  c('surfwateryes') = toInt(lineposOffset(135, 4));
-  c('slushyes') = toInt(lineposOffset(135, 5));
-  c('coldsnowyes') = toInt(lineposOffset(135, 6));
-  c('coldtotyes') = toInt(lineposOffset(135, 7));
+  c('runoffyes') = toInt(lineposOffset(173, 1));
+  c('superyes') = toInt(lineposOffset(173, 2));
+  c('wateryes') = toInt(lineposOffset(173, 3));
+  c('surfwateryes') = toInt(lineposOffset(173, 4));
+  c('slushyes') = toInt(lineposOffset(173, 5));
+  c('coldsnowyes') = toInt(lineposOffset(173, 6));
+  c('coldtotyes') = toInt(lineposOffset(173, 7));
 
-  c('ddmethod') = toInt(lineposOffset(139, 1));
-  c('DDFice') = str2double(lineposOffset(140, 1));
-  c('DDFsnow') = str2double(lineposOffset(141, 1));
+  c('ddmethod') = toInt(lineposOffset(177, 1));
+  c('DDFice') = str2double(lineposOffset(178, 1));
+  c('DDFsnow') = str2double(lineposOffset(179, 1));
 
-  c('meltfactor') = str2double(lineposOffset(143, 1));
-  c('radfactorice') = str2double(lineposOffset(144, 1));
-  c('radfactorsnow') = str2double(lineposOffset(145, 1));
-  c('debrisfactor') = toInt(lineposOffset(146, 1));
+  c('meltfactor') = str2double(lineposOffset(181, 1));
+  c('radfactorice') = str2double(lineposOffset(182, 1));
+  c('radfactorsnow') = str2double(lineposOffset(183, 1));
+  c('debrisfactor') = toInt(lineposOffset(184, 1));
 
-  c('coordinatesyes') = toInt(lineposOffset(148, 1));
+  c('coordinatesyes') = toInt(lineposOffset(186, 1));
   
   %Read in the stake coords
   if c('maxmeltstakes') > 0
     fmt = c('coordinatesyes');
     stake_coords = [];
-    for ii = 149:(149 + c('maxmeltstakes') - 1)
-      thisStake = [coordFmt(fmt, lineposOffset(ii,1)), coordFmt(fmt,lineposOffset(ii,2))];
+    for ii = 187:(187 + c('maxmeltstakes') - 1)
+      thisStake = [coordFmt(fmt, lineposOffset(ii, 1)), coordFmt(fmt,lineposOffset(ii, 2))];
       %thisStake = arrayfun(@(y)coordFmt(fmt,y), thisStake);%, 'UniformOutput', false);
       stake_coords = [stake_coords; thisStake ];
     end
